@@ -27,10 +27,10 @@ const sendEmail = (name, email, id) => {
             from: "triwizard57@gmail.com",
             to: email,
             subject: "Verification Mail",
-            html: `<p>Hi ${name},
-            Please click <a href="https://friendly-pig-toga.cyclic.cloud/user/verify?id=${id}">here</a> to verify Your Email</p>`
+            html: `<p>Hi ${name}</p>,
+            <p>Please click <a href="https://friendly-pig-toga.cyclic.cloud/user/verify?id=${id}">here</a> to verify Your Email</p>`
         }
-        console.log("Sent");
+
         transporter.sendMail(mailOptions, (err, info) => {
             if (err) {
                 console.log(err);
@@ -49,9 +49,9 @@ const sendWorkTimeEmail = (name, email, totalTime, start, end) => {
 
         const transporter = nodeMailer.createTransport({
             host: "smtp.gmail.com",
-            port: 465,
-            secure: true,
-            requireTLS: true,
+            port: 587,
+            secure: false,
+            requireTLS: false,
             auth: {
                 user: 'triwizard57@gmail.com',
                 pass: process.env.PASS
@@ -59,14 +59,14 @@ const sendWorkTimeEmail = (name, email, totalTime, start, end) => {
         })
 
         const mailOptions = {
-            from: "vk640890@gmail.com",
+            from: "triwizard57@gmail.com",
             to: email,
             subject: "Today's WorkTime",
-            html: `<p>Hello ${name},</br>
-            Your Total Dashboard time is ${totalTime} Hours, your start time is ${start}, and stop time is
-            ${end}</br>
-            Thank you,</br>
-            Vivek Kumar</p>`
+            html: `<p>Hello ${name},</p>
+            <p>Your Total Dashboard time is ${totalTime} Hours, your start time is ${start}, and stop time is
+            ${end}</p>
+            <p>Thank you,</p>
+            <p>Vivek Kumar</p>`
         }
 
         transporter.sendMail(mailOptions, (err, info) => {
