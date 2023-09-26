@@ -16,7 +16,7 @@ const sendEmail = (name, email, id) => {
             host: "smtp.gmail.com",
             port: 587,
             secure: false,
-            requireTLS: true,
+            requireTLS: false,
             auth: {
                 user: 'triwizard57@gmail.com',
                 pass: process.env.PASS
