@@ -141,10 +141,10 @@ userRoute.post("/login", async (req, res) => {
         if (user) {
 
             bcrypt.compare(password, user.password, (err, result) => {
-                if (err) {
-                    res.status(400).send({ err: "invalid password" })
-                } else {
+                if (result) {
                     res.status(200).send({ msg: "user logged in", token: jwt.sign({ userId: user._id }, "secret"), isVerified: user.isVerified });
+                } else {
+                    res.status(400).send({ err: "invalid password" })
                 }
             })
         } else {
@@ -201,7 +201,7 @@ userRoute.post("/worktime", async (req, res) => {
 
         sendWorkTimeEmail(user.fullName, user.email, totalTime, start, end);
 
-        res.status(200).send({ msg:"email sent" });
+        res.status(200).send({ msg: "email sent" });
 
     } catch (e) {
         console.log(e);
