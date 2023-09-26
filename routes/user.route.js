@@ -24,7 +24,7 @@ const sendEmail = (name, email, id) => {
         })
 
         const mailOptions = {
-            from: "vk640890@gmail.com",
+            from: "triwizard57@gmail.com",
             to: email,
             subject: "Verification Mail",
             html: `<p>Hi ${name},
