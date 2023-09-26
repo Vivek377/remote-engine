@@ -28,9 +28,9 @@ const sendEmail = (name, email, id) => {
             to: email,
             subject: "Verification Mail",
             html: `<p>Hi ${name},
-            Please click <a href="http://localhost:4832/user/verify?id=${id}">here</a> to verify Your Email</p>`
+            Please click <a href="https://friendly-pig-toga.cyclic.cloud/user/verify?id=${id}">here</a> to verify Your Email</p>`
         }
-
+        console.log("Sent");
         transporter.sendMail(mailOptions, (err, info) => {
             if (err) {
                 console.log(err);
